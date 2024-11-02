@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="/static/images/solar-panels.ico">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Solar Panel Fault Detection</title>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="brand">Solar Panel Fault Detection</h1>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#upload">Upload</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Detect Faults in Solar Panels</h2>
+            <p>Upload images of solar panels to automatically detect faults and improve efficiency.</p>
+            <a href="#upload" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Image Upload Section -->
+    <section class="upload-section" id="upload">
+        <div class="container">
+            <h2>Upload Your Image</h2>
+            <p>Drag and drop an image, or click to browse files from your device.</p>
+            <div class="upload-area" id="upload-area">
+                <input type="file" id="file-input" accept="image/*">
+                <p>Drag & Drop or Click to Upload</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Solar Panel Fault Detection. All Rights Reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#upload">Upload</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Drag and Drop functionality
+        const uploadArea = document.getElementById("upload-area");
+        const fileInput = document.getElementById("file-input");
+
+        uploadArea.addEventListener("click", () => fileInput.click());
+
+        uploadArea.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            uploadArea.classList.add("drag-over");
+        });
+
+        uploadArea.addEventListener("dragleave", () => {
+            uploadArea.classList.remove("drag-over");
+        });
+
+        uploadArea.addEventListener("drop", (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove("drag-over");
+            fileInput.files = e.dataTransfer.files;
+            alert("File(s) uploaded successfully!");
+        });
+    </script>
+
+</body>
+</html>

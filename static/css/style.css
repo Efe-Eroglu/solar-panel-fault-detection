@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #FF7F50;
+    padding: 1em;
+}
+
+.navbar .brand {
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    display: inline;
+}
+
+.nav-links {
+    list-style: none;
+    display: inline;
+    float: right;
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 1em;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #FF7F50;
+    color: white;
+    text-align: center;
+    padding: 5em 0;
+}
+
+.hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+.cta-button {
+    background-color: white;
+    color: #FF7F50;
+    padding: 0.8em 2em;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cta-button:hover {
+    background-color: #fff5f0;
+}
+
+/* Upload Section */
+.upload-section {
+    padding: 3em 0;
+    text-align: center;
+}
+
+.upload-section h2 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.upload-section p {
+    font-size: 1.1em;
+    margin-bottom: 1.5em;
+}
+
+.upload-area {
+    border: 2px dashed #FF7F50;
+    padding: 2em;
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.upload-area p {
+    color: #FF7F50;
+    font-size: 1.2em;
+}
+
+.upload-area.drag-over {
+    background-color: #FFF5F0;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 1.5em 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 1em;
+}
+
+.footer-links li {
+    display: inline;
+    margin: 0 1em;
+}
+
+.footer-links a {
+    color: #FF7F50;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
