@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/style.css">
     <link rel="icon" href="/static/images/solar-panels.ico">
     <link rel="stylesheet" href="/static/css/style.css">
     <title>Solar Panel Fault Detection</title>
@@ -16,7 +15,7 @@
             <h1 class="brand">Solar Panel Fault Detection</h1>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#upload">Upload</a></li>
+                <li><a href="#upload">About us</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -36,9 +35,18 @@
         <div class="container">
             <h2>Upload Your Image</h2>
             <p>Drag and drop an image, or click to browse files from your device.</p>
-            <div class="upload-area" id="upload-area">
-                <input type="file" id="file-input" accept="image/*">
-                <p>Drag & Drop or Click to Upload</p>
+            <div class="upload-wrapper">
+                <div class="upload-area" id="upload-area">
+                    <input type="file" id="file-input" accept="image/*" style="display: none;">
+                    <p>Drag & Drop or Click to Upload</p>
+                </div>
+            </div>
+            
+            <div class="result-display" style="display: flex; justify-content: space-between; margin-top: 20px;">
+                <div id="result" class="result-text" style="font-size: 1.5em; font-weight: bold; color: #333;"></div>
+                <div class="image-preview">
+                    <img id="preview-img" src="#" alt="Uploaded Image" style="display: none; max-width: 300px; border-radius: 8px;">
+                </div>
             </div>
         </div>
     </section>
@@ -56,9 +64,10 @@
     </footer>
 
     <script>
-        // Drag and Drop functionality
         const uploadArea = document.getElementById("upload-area");
         const fileInput = document.getElementById("file-input");
+        const resultText = document.getElementById("result");
+        const previewImg = document.getElementById("preview-img");
 
         uploadArea.addEventListener("click", () => fileInput.click());
 
@@ -74,9 +83,41 @@
         uploadArea.addEventListener("drop", (e) => {
             e.preventDefault();
             uploadArea.classList.remove("drag-over");
-            fileInput.files = e.dataTransfer.files;
-            alert("File(s) uploaded successfully!");
+            const files = e.dataTransfer.files;
+            handleFileUpload(files[0]);
         });
+
+        fileInput.addEventListener("change", (e) => {
+            handleFileUpload(e.target.files[0]);
+        });
+
+        function handleFileUpload(file) {
+            if (!['image/jpeg', 'image/png', 'image/jpg'].includes(file.type)) {
+                resultText.textContent = "Only JPG, JPEG, and PNG files are allowed.";
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            fetch("/classify", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    resultText.textContent = data.error;
+                } else {
+                    resultText.textContent = `Prediction: ${data.prediction}`;
+                    previewImg.src = data.image_url;
+                    previewImg.style.display = "block";
+                }
+            })
+            .catch(error => {
+                resultText.textContent = "An error occurred. Please try again.";
+            });
+        }
     </script>
 
 </body>
