@@ -31,6 +31,11 @@ Flask tabanlı web uygulaması, kullanıcıların kendi görsellerini yükleyere
 
 3. Tarayıcıdan `http://localhost:5000` adresine giderek uygulamayı kullanabilirsiniz.
 
+## Proje İçi Görüntüler
+
+![demo](https://github.com/user-attachments/assets/0564364a-317d-4941-a1ed-13dceeb365e6)
+
+
 
 ## Yapılabilecekler
 
@@ -80,6 +85,11 @@ The Flask-based web application allows users to instantly get predictions from t
    The application will run by default at **`http://localhost:5000`**
 3. Access the application in your browser at **`http://localhost:5000`**
 
+
+
+## Images From The Project
+
+![demo](https://github.com/user-attachments/assets/0564364a-317d-4941-a1ed-13dceeb365e6)
 
 ## Future Improvements
 
